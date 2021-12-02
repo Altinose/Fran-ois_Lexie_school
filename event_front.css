@@ -1,4 +1,4 @@
-.body{
+body{
     margin : 0px;
     padding : 0px;
     border : 0px;
@@ -6,10 +6,47 @@
 
 .ecole{
     width: 100%;
-    height: 10px;
-    
+    height : 300px;
+    background-image: url("menu_pict/GS-CP.jpg");
+    background-size: cover;
+    background-position: bottom;
 }
 
-.ecole1{
-    height: 30px;
+a {
+    text-decoration: none;
+    color : black;
+}
+
+header{
+    background-color : #775031;
+    width: 100%;
+    height: 100px;  
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2.2em;
+    display : flex;
+    position : fixed;   
+}
+
+.text_header{
+    padding-top: 26px;
+}
+
+.middle{
+    display :flex;
+}
+
+.right{
+    margin-top: 26px;
+    margin-bottom: 26px;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+    display : flex;
+    justify-content: space-between;
+    width: 800px;
+    margin-right: 20px;
+}
+
+.txt:hover{
+    font-weight: bold;
 }
