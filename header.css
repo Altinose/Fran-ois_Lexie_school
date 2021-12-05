@@ -87,11 +87,20 @@ body {
 
 
 footer{
-    text-align: center;
+    display : flex;
     height: 50px;
     color: white;
+    justify-content: space-between;
+    padding-left: 26px;
+    padding-right: 26px;
 }
 
-.down_logo{
-    padding-top: 20px;
+.deco{
+  height : 30px;
+  padding-top: 10px;
 }
+
+.foot{
+  padding-top: 18px;
+}
+
