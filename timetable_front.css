@@ -5,19 +5,28 @@
 .title{
     text-align:center;
     font-size: 2em;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .hourly{
     display : flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 body{
-    background-image: url("header_pict/alle.jpg");
-    background-size: cover;
+    
     margin: 0px;
     padding : 0px;
+}
+
+.topnav{
+    background-color : #d1b06d;
+}
+
+.ecole{
+    background-image: url("menu_pict/jolie-petite-fille-qui-ajuste-sa-montre_23-2148349788.jpg");
+}
+
+footer{
+    background-color: #d1b06d;
 }

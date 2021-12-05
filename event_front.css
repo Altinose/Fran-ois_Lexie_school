@@ -1,15 +1,11 @@
-.body{
-    margin : 0px;
-    padding : 0px;
-    border : 0px;
+.topnav{
+  background-color : #a57c60;
 }
 
 .ecole{
-    width: 100%;
-    height: 10px;
-    
+  background-image: url("menu_pict/GS-CP.jpg");
 }
 
-.ecole1{
-    height: 30px;
+footer{
+  background-color: #a57c60;
 }
