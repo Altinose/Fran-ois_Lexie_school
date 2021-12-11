@@ -2,12 +2,23 @@
   background-color : #a57c60;
 }
 
+body{
+  background-color: #a57c60;
+}
+
 .ecole{
   background-image: url("menu_pict/GS-CP.jpg");
 }
 
 footer{
   background-color: #a57c60;
+}
+
+.explain{
+  margin-bottom: 70px;
+  margin-left: 30px;
+  margin-right: 30px;
+  text-align: center;
 }
 
 .title{
@@ -19,18 +30,19 @@ footer{
 
 .flex{
   display: flex;
+  border-radius: 30px;
 }
 
 .flex1{
-  background-color: #250902;
+  background-color: #855A5C;
 }
 
 .flex2{
-  background-color: #38040E;
+  background-color: #8A8E91;
 }
 
 .flex3{
-  background-color: #640D14;
+  background-color: #B8D4E3;
 }
 
 .flex4{
@@ -69,7 +81,6 @@ footer{
   padding-top: 120px;
   width: 60%;
   padding-bottom: 120px;
-  color:white;
 }
 
 .text1{
@@ -80,4 +91,8 @@ footer{
 .text2{
   float : left;
   padding-left: 20px;
+}
+
+.pict:hover{
+  background-size: 600px 400px;
 }
