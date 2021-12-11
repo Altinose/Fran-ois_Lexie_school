@@ -9,3 +9,75 @@
 footer{
   background-color: #a57c60;
 }
+
+.title{
+  font-size: 80px;
+  text-align: center;
+  margin-top : 50px;
+  margin-bottom : 70px;
+}
+
+.flex{
+  display: flex;
+}
+
+.flex1{
+  background-color: #250902;
+}
+
+.flex2{
+  background-color: #38040E;
+}
+
+.flex3{
+  background-color: #640D14;
+}
+
+.flex4{
+  background-color: #FCDDF2;
+}
+
+.pict{
+  width : 40%;
+  background-size: 500px 300px;
+  background-repeat: no-repeat;
+  margin : 50px;
+  background-position: center;
+}
+
+.pict1{
+  float : left;
+  background-image: url("event_pict/DSC_7881.jpg");
+}
+
+.pict2{
+  float : right;
+  background-image: url("event_pict/ecole.jpg");
+}
+
+.pict3{
+  float:left;
+  background-image: url("event_pict/ensemble.jpg");
+}
+
+.pict4{
+  float:right;
+  background-image: url("event_pict/feteforaine.jpg");
+}
+
+.text{
+  padding-top: 120px;
+  width: 60%;
+  padding-bottom: 120px;
+  color:white;
+}
+
+.text1{
+  float : right;
+  padding-right: 20px;
+}
+
+.text2{
+  float : left;
+  padding-left: 20px;
+}
