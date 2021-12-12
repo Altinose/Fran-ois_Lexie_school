@@ -14,10 +14,14 @@ router.get("/connexion", connectiondisplay);
 
 router.get("/email", emaildisplay);
 
+router.get("/event", eventdisplay);
 
 router.get("/welcome", showwelcome);
 router.get("/", redir);
 
+function eventdisplay(request, response) {
+    response.render("event");
+}
 function connectiondisplay(request, response) {
     response.render("connexion");
 }
