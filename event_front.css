@@ -1,17 +1,18 @@
-.topnav{
-  background-color : #a57c60;
-}
-
-body{
-  background-color: #a57c60;
-}
-
 .ecole{
   background-image: url("menu_pict/GS-CP.jpg");
 }
 
-footer{
-  background-color: #a57c60;
+footer, nav, body{
+  background-color: #dbb490;
+}
+
+@media (max-width:909px){
+a:hover{
+  color:#f5c89e;
+}}
+
+.explain, .title{
+  color:white;
 }
 
 .explain{
@@ -95,11 +96,4 @@ footer{
 
 .pict:hover{
   background-size: 600px 400px;
-}
-
-nav #icon{
-  color:white;
-  font-size: 30px;
-  float: right;
-  margin-right: 4;
 }
