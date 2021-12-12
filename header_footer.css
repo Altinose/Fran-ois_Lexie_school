@@ -40,7 +40,7 @@ nav a{
     border-radius: 3px;
 }
 
-a:hover{
+nav a:hover{
     background-color: #ddd;
     transition : .5s;
 }

@@ -2,17 +2,22 @@
   background-image: url("menu_pict/GS-CP.jpg");
 }
 
-footer, nav, body{
+footer, nav,body{
   background-color: #dbb490;
 }
 
 @media (max-width:909px){
-a:hover{
-  color:#f5c89e;
+nav a:hover{
+  color:#dbb490;
 }}
 
-.explain, .title{
-  color:white;
+.pic{
+  width: 25%;
+}
+
+.dis{
+  flex-direction: row;
+  display: flex;
 }
 
 .explain{
@@ -31,23 +36,22 @@ a:hover{
 
 .flex{
   display: flex;
-  border-radius: 30px;
 }
 
 .flex1{
-  background-color: #855A5C;
+  background-color: #FEFEE0;
 }
 
 .flex2{
-  background-color: #8A8E91;
+  background-color: #F6FEFE;
 }
 
 .flex3{
-  background-color: #B8D4E3;
+  background-color: #FEFEE0;
 }
 
 .flex4{
-  background-color: #FCDDF2;
+  background-color: #F6FEFE;
 }
 
 .pict{
@@ -96,4 +100,5 @@ a:hover{
 
 .pict:hover{
   background-size: 600px 400px;
+  transition: all 0.5s;
 }
