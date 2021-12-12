@@ -52,7 +52,7 @@ CREATE TABLE grade(
     grade_math int,
     grade_french int,
     grade_history int, 
-    average int DEFAULT ((grade_math+grade_history+grade_french))/3   
+    average int DEFAULT ((grade_math+grade_history+grade_french))/3,   
     CONSTRAINT fk_grade_student FOREIGN KEY (grade_student) REFERENCES student(student_id)
 );
 
