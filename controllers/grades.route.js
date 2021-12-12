@@ -9,8 +9,22 @@ router.get("/grades/:student_id/:filter", grades);
 router.get("/grades/:student_id", moovetograde);
 
 
+router.get("/connexion", connectiondisplay);
+
+
+router.get("/email", emaildisplay);
+
+
 router.get("/welcome", showwelcome);
 router.get("/", redir);
+
+function connectiondisplay(request, response) {
+    response.render("connexion");
+}
+
+function emaildisplay(request, response) {
+    response.render("email");
+}
 
 function moovetograde(request, response) {
     var student_id = request.params.student_id;
