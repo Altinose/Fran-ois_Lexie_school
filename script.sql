@@ -5,7 +5,7 @@ DROP TABLE if exists student;
 DROP TABLE if exists class;
 DROP TABLE if exists worker;
 DROP TABLE if exists login;
-DROP TABLE is exists grade;
+DROP TABLE if exists grade;
 
 CREATE TABLE login(
     login_id int AUTO_INCREMENT PRIMARY KEY,
@@ -65,7 +65,7 @@ INSERT INTO login VALUES
     (7,'olaurenta','rqzwgè','user'),
     (8,'jleroy','jkhgdn','user'),
     (9,'aroux','ghk;;h','user'),
-    (10,'amourel','gyuguyjh','user')
+    (10,'amourel','gyuguyjh','user'),
     (11,'pletessier','dfghgf','admin'),
     (12,'mpharmacy','rtyuiol','admin'),
     (13,'fcrochet','tyuik;','admin'),

@@ -1,0 +1,42 @@
+body {
+  background-color: #f9e4b7;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.logo {
+  width: 100px;
+  vertical-align: middle;
+}
+
+.titre {
+  font-size: 60px;
+}
+
+.formulaire {
+  text-align: center;
+  margin-top: 7%;
+  background-color: white;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border-radius: 10px;
+}
+
+form {
+  font-size: 30px;
+}
+
+.input {
+  width: 60%;
+  height: 30px;
+}
+
+.button {
+  width: 200px;
+}
+
+.down_logo {
+  font-size: 15px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
