@@ -14,10 +14,30 @@ router.get("/connexion", connectiondisplay);
 
 router.get("/email", emaildisplay);
 
+router.get("/event", eventdisplay);
+
+
+router.get("/menu", menudisplay);
+
+router.get("/timetable", timetabledisplay)
+
 
 router.get("/welcome", showwelcome);
+
 router.get("/", redir);
 
+
+function timetabledisplay(request, response) {
+    response.render("timetable");
+}
+
+function menudisplay(request, response) {
+    response.render("menu");
+}
+
+function eventdisplay(request, response) {
+    response.render("event");
+}
 function connectiondisplay(request, response) {
     response.render("connexion");
 }
