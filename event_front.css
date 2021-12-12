@@ -1,0 +1,104 @@
+.ecole{
+  background-image: url("menu_pict/GS-CP.jpg");
+}
+
+footer, nav,body{
+  background-color: #dbb490;
+}
+
+@media (max-width:909px){
+nav a:hover{
+  color:#dbb490;
+}}
+
+.pic{
+  width: 25%;
+}
+
+.dis{
+  flex-direction: row;
+  display: flex;
+}
+
+.explain{
+  margin-bottom: 70px;
+  margin-left: 30px;
+  margin-right: 30px;
+  text-align: center;
+}
+
+.title{
+  font-size: 80px;
+  text-align: center;
+  margin-top : 50px;
+  margin-bottom : 70px;
+}
+
+.flex{
+  display: flex;
+}
+
+.flex1{
+  background-color: #FEFEE0;
+}
+
+.flex2{
+  background-color: #F6FEFE;
+}
+
+.flex3{
+  background-color: #FEFEE0;
+}
+
+.flex4{
+  background-color: #F6FEFE;
+}
+
+.pict{
+  width : 40%;
+  background-size: 500px 300px;
+  background-repeat: no-repeat;
+  margin : 50px;
+  background-position: center;
+}
+
+.pict1{
+  float : left;
+  background-image: url("event_pict/DSC_7881.jpg");
+}
+
+.pict2{
+  float : right;
+  background-image: url("event_pict/ecole.jpg");
+}
+
+.pict3{
+  float:left;
+  background-image: url("event_pict/ensemble.jpg");
+}
+
+.pict4{
+  float:right;
+  background-image: url("event_pict/feteforaine.jpg");
+}
+
+.text{
+  padding-top: 120px;
+  width: 60%;
+  padding-bottom: 120px;
+}
+
+.text1{
+  float : right;
+  padding-right: 20px;
+}
+
+.text2{
+  float : left;
+  padding-left: 20px;
+}
+
+.pict:hover{
+  background-size: 600px 400px;
+  transition: all 0.5s;
+}

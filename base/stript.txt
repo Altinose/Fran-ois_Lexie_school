@@ -1,12 +1,11 @@
-DROP DATABASE websiteSchool;
 CREATE DATABASE if not exists webSiteSchool;
 USE webSiteSchool;
 
+DROP TABLE if exists grade;
 DROP TABLE if exists student;
 DROP TABLE if exists class;
 DROP TABLE if exists worker;
 DROP TABLE if exists login;
-DROP TABLE if exists grade;
 
 CREATE TABLE login(
     login_id int AUTO_INCREMENT PRIMARY KEY,
@@ -41,7 +40,6 @@ CREATE TABLE student (
     student_last_name varchar(100) NOT NULL,
     student_class int,
     student_phone varchar (10),
-    student_average int NOT NULL,
     student_login int,
     CONSTRAINT fk_student_login FOREIGN KEY (student_login) REFERENCES login(login_id),
     CONSTRAINT fk_student_class FOREIGN KEY (student_class) REFERENCES class(class_id)
@@ -66,23 +64,83 @@ INSERT INTO login VALUES
     (7,'olaurenta','rqzwgè','user'),
     (8,'jleroy','jkhgdn','user'),
     (9,'aroux','ghk;;h','user'),
-    (10,'amourel','gyuguyjh','user'),
-    (11,'pletessier','dfghgf','admin'),
-    (12,'mpharmacy','rtyuiol','admin'),
-    (13,'fcrochet','tyuik;','admin'),
-    (14,'gdelangle','refgb','admin'),
-    (15,'mpottier','rtyuj','admin'),
-    (16,'palain','ikedf','admin'),
-    (17,'mlebourder','ujrfv','admin');
+	(10,'amourel','gyuguyjh','user'),
+    (11,'lpetit2', '1234', 'user'),
+    (12,'trobert2','0000','user'),
+    (13,'frichard2','Labellefrance','user'),
+    (14,'mdurand2','Cbolafolie','user'),
+    (15,'ndubois2','trois','user'),
+    (16,'lmoro2','bonjour*10','user'),
+    (17,'olaurenta2','rqzwgè','user'),
+    (18,'jleroy2','jkhgdn','user'),
+    (19,'aroux2','ghk;;h','user'),
+	(20,'amourel2','gyuguyjh','user'),
+    (21,'lpetit3', '1234', 'user'),
+    (22,'trobert3','0000','user'),
+    (23,'frichard3','Labellefrance','user'),
+    (24,'mdurand3','Cbolafolie','user'),
+    (25,'ndubois3','trois','user'),
+    (26,'lmoro3','bonjour*10','user'),
+    (27,'olaurenta3','rqzwgè','user'),
+    (28,'jleroy3','jkhgdn','user'),
+    (29,'aroux3','ghk;;h','user'),
+	(30,'amourel3','gyuguyjh','user'),
+    (31,'lpetit4', '1234', 'user'),
+    (32,'trobert4','0000','user'),
+    (33,'frichard4','Labellefrance','user'),
+    (34,'mdurand4','Cbolafolie','user'),
+    (35,'ndubois4','trois','user'),
+    (36,'lmoro4','bonjour*10','user'),
+    (37,'olaurenta4','rqzwgè','user'),
+    (38,'jleroy4','jkhgdn','user'),
+    (39,'aroux4','ghk;;h','user'),
+	(40,'amourel4','gyuguyjh','user'),
+    (41,'lpetit5', '1234', 'user'),
+    (42,'trobert5','0000','user'),
+    (43,'frichard5','Labellefrance','user'),
+    (44,'mdurand5','Cbolafolie','user'),
+    (45,'ndubois5','trois','user'),
+    (46,'lmoro5','bonjour*10','user'),
+    (47,'olaurenta5','rqzwgè','user'),
+    (48,'jleroy5','jkhgdn','user'),
+    (49,'aroux5','ghk;;h','user'),
+	(50,'amourel5','gyuguyjh','user'),
+    (51,'lpetit6', '1234', 'user'),
+    (52,'trobert6','0000','user'),
+    (53,'frichard6','Labellefrance','user'),
+    (54,'mdurand6','Cbolafolie','user'),
+    (55,'ndubois6','trois','user'),
+    (56,'lmoro6','bonjour*10','user'),
+    (57,'olaurenta6','rqzwgè','user'),
+    (58,'jleroy6','jkhgdn','user'),
+    (59,'aroux6','ghk;;h','user'),
+(60,'amourel6','gyuguyjh','user'),
+    (61,'lpetit7', '1234', 'user'),
+    (62,'trobert7','0000','user'),
+    (63,'frichard7','Labellefrance','user'),
+    (64,'mdurand7','Cbolafolie','user'),
+    (65,'ndubois7','trois','user'),
+    (66,'lmoro7','bonjour*10','user'),
+    (67,'olaurenta7','rqzwgè','user'),
+    (68,'jleroy7','jkhgdn','user'),
+    (69,'aroux8','ghk;;h','user'),
+(70,'amourel7','gyuguyjh','user'),    
+    (71,'pletessier','dfghgf','admin'),
+    (72,'mpharmacy','rtyuiol','admin'),
+    (73,'fcrochet','tyuik;','admin'),
+    (74,'gdelangle','refgb','admin'),
+    (75,'mpottier','rtyuj','admin'),
+    (76,'palain','ikedf','admin'),
+    (77,'mlebourder','ujrfv','admin');
 
 INSERT INTO worker VALUES 
-	(1,'teacher','Patrick','Letessier','0766006662','patrickletessier@gmail.com',11),
-	(2,'teacher','Michel','Pharmacy','0784087217','michelp@gmail.com',12),
-	(3,'teacher','Francine','Crochet','0243741313','fcrochet@gmail.com',13),
-	(4,'teacher','Gilbert','Delangle','0631243611','gdelange@gmail.com',14),
-	(5,'teacher','Marcel','Pottier','0687836038','mpottier@gmail.com',15),
-	(6,'teacher','Philippe','Alain','07071228143','palain@gmail.com',16),
-	(7,'director','Marouin','Lebourder','0624242424','mlebourder@gmail',17);
+	(1,'teacher','Patrick','Letessier','0766006662','patrickletessier@gmail.com',71),
+	(2,'teacher','Michel','Pharmacy','0784087217','michelp@gmail.com',72),
+	(3,'teacher','Francine','Crochet','0243741313','fcrochet@gmail.com',73),
+	(4,'teacher','Gilbert','Delangle','0631243611','gdelange@gmail.com',74),
+	(5,'teacher','Marcel','Pottier','0687836038','mpottier@gmail.com',75),
+	(6,'teacher','Philippe','Alain','07071228143','palain@gmail.com',76),
+	(7,'director','Marouin','Lebourder','0624242424','mlebourder@gmail',77);
 
 INSERT INTO class VALUES
 	(1,1,'CP',1,1),
@@ -94,16 +152,78 @@ INSERT INTO class VALUES
 	(7,1,'CM2',3,7);
 
 INSERT INTO student VALUES
-	(1,'Lucas','Petit',1,'0655778833',12,1),
-	(2,'Theo','Robert',2,'0623423565',13,2),
-	(3,'Florian','Richard',2,'0654345678',12,3),
-	(4,'Malo','Durand',3,'0743657687',11,4),
-	(5,'Nathan','Dubois',4,'0619384720',20,5),
-	(6,'Laura','Moro',5,'0748596710',17,6),
-	(7,'Orlane','Laurenta',6,'0758472043',14,7),
-	(8,'Juliette','Leroy',7,'0628461740',18,8),
-	(9,'Angelique','Roux',7,'0643215467',6,9),
-	(10,'Antoine','Mourel',7,'0657482905',4,10);
+	(1,'Lucas','Petit',1,'0655778833',1),
+	(2,'Theo','Robert',1,'0623423565',2),
+	(3,'Florian','Richard',1,'0654345678',3),
+	(4,'Malo','Durand',1,'0743657687',4),
+	(5,'Nathan','Dubois',1,'0619384720',5),
+	(6,'Laura','Moro',1,'0748596710',6),
+	(7,'Orlane','Laurenta',1,'0758472043',7),
+	(8,'Juliette','Leroy',1,'0628461740',8),
+	(9,'Angelique','Roux',1,'0643215467',9),
+	(10,'Antoine','Mourel',1,'0657482905',10),
+	(11,'Lucas','Petit',2,'0655778833',11),
+	(12,'Theo','Robert',2,'0623423565',12),
+	(13,'Florian','Richard',2,'0654345678',13),
+	(14,'Malo','Durand',2,'0743657687',14),
+	(15,'Nathan','Dubois',2,'0619384720',15),
+	(16,'Laura','Moro',2,'0748596710',16),
+	(17,'Orlane','Laurenta',2,'0758472043',17),
+	(18,'Juliette','Leroy',2,'0628461740',18),
+	(19,'Angelique','Roux',2,'0643215467',19),
+	(20,'Antoine','Mourel',2,'0657482905',20),
+	(21,'Lucas','Petit',3,'0655778833',21),
+	(22,'Theo','Robert',3,'0623423565',22),
+	(23,'Florian','Richard',3,'0654345678',23),
+	(24,'Malo','Durand',3,'0743657687',24),
+	(25,'Nathan','Dubois',3,'0619384720',25),
+	(26,'Laura','Moro',3,'0748596710',26),
+	(27,'Orlane','Laurenta',3,'0758472043',27),
+	(28,'Juliette','Leroy',3,'0628461740',28),
+	(29,'Angelique','Roux',3,'0643215467',29),
+	(30,'Antoine','Mourel',3,'0657482905',30),
+	(31,'Lucas','Petit',7,'0655778833',31),
+	(32,'Theo','Robert',7,'0623423565',32),
+	(33,'Florian','Richard',7,'0654345678',33),
+	(34,'Malo','Durand',7,'0743657687',34),
+	(35,'Nathan','Dubois',7,'0619384720',35),
+	(36,'Laura','Moro',7,'0748596710',36),
+	(37,'Orlane','Laurenta',7,'0758472043',37),
+	(38,'Juliette','Leroy',7,'0628461740',38),
+	(39,'Angelique','Roux',7,'0643215467',39),
+	(40,'Antoine','Mourel',7,'0657482905',40),
+	(41,'Lucas','Petit',4,'0655778833',41),
+	(42,'Theo','Robert',4,'0623423565',42),
+	(43,'Florian','Richard',4,'0654345678',43),
+	(44,'Malo','Durand',4,'0743657687',44),
+	(45,'Nathan','Dubois',4,'0619384720',45),
+	(46,'Laura','Moro',4,'0748596710',46),
+	(47,'Orlane','Laurenta',4,'0758472043',47),
+	(48,'Juliette','Leroy',4,'0628461740',48),
+	(49,'Angelique','Roux',4,'0643215467',49),
+	(50,'Antoine','Mourel',4,'0657482905',50),
+	(51,'Lucas','Petit',5,'0655778833',51),
+	(52,'Theo','Robert',5,'0623423565',52),
+	(53,'Florian','Richard',5,'0654345678',53),
+	(54,'Malo','Durand',5,'0743657687',54),
+	(55,'Nathan','Dubois',5,'0619384720',55),
+	(56,'Laura','Moro',5,'0748596710',56),
+	(57,'Orlane','Laurenta',5,'0758472043',57),
+	(58,'Juliette','Leroy',5,'0628461740',58),
+	(59,'Angelique','Roux',5,'0643215467',59),
+	(60,'Antoine','Mourel',5,'0657482905',60),
+	(61,'Lucas','Petit',6,'0655778833',61),
+	(62,'Theo','Robert',6,'0623423565',62),
+	(63,'Florian','Richard',6,'0654345678',63),
+	(64,'Malo','Durand',6,'0743657687',64),
+	(65,'Nathan','Dubois',6,'0619384720',65),
+	(66,'Laura','Moro',6,'0748596710',66),
+	(67,'Orlane','Laurenta',6,'0758472043',67),
+	(68,'Juliette','Leroy',6,'0628461740',68),
+	(69,'Angelique','Roux',6,'0643215467',69),
+	(70,'Antoine','Mourel',6,'0657482905',70);
+
+
 
 INSERT INTO grade VALUES 
 	(1,1,13,14,12),
@@ -115,57 +235,65 @@ INSERT INTO grade VALUES
 	(7,7,14,14,14),
 	(8,8,18,19,17),
 	(9,9,10,6,2),
-	(10,10,4,2,6);
+	(10,10,4,2,6),
+	(11,11,13,14,12),
+	(12,12,11,13,15),
+	(13,13,12,12,12),
+	(14,14,10,11,12),
+	(15,15,20,20,20),
+	(16,16,17,14,20),
+	(17,17,14,14,14),
+	(18,18,18,19,17),
+	(19,19,10,6,2),
+	(20,20,4,2,6),
+	(21,21,13,14,12),
+	(22,22,11,13,15),
+	(23,23,12,12,12),
+	(24,24,10,11,12),
+	(25,25,20,20,20),
+	(26,26,17,14,20),
+	(27,27,14,14,14),
+	(28,28,18,19,17),
+	(29,29,10,6,2),
+	(30,30,4,2,6),
+	(31,31,13,14,12),
+	(32,32,11,13,15),
+	(33,33,12,12,12),
+	(34,34,10,11,12),
+	(35,35,20,20,20),
+	(36,36,17,14,20),
+	(37,37,14,14,14),
+	(38,38,18,19,17),
+	(39,39,10,6,2),
+	(40,40,4,2,6),
+	(41,41,13,14,12),
+	(42,42,11,13,15),
+	(43,43,12,12,12),
+	(44,44,10,11,12),
+	(45,45,20,20,20),
+	(46,46,17,14,20),
+	(47,47,14,14,14),
+	(48,48,18,19,17),
+	(49,49,10,6,2),
+	(50,50,4,2,6),
+	(51,51,13,14,12),
+	(52,52,11,13,15),
+	(53,53,12,12,12),
+	(54,54,10,11,12),
+	(55,55,20,20,20),
+	(56,56,17,14,20),
+	(57,57,14,14,14),
+	(58,58,18,19,17),
+	(59,59,10,6,2),
+	(60,60,4,2,6),
+	(61,61,13,14,12),
+	(62,62,11,13,15),
+	(63,63,12,12,12),
+	(64,64,10,11,12),
+	(65,65,20,20,20),
+	(66,66,17,14,20),
+	(67,67,14,14,14),
+	(68,68,18,19,17),
+	(69,69,10,6,2),
+	(70,70,4,2,6);
 
-
-
-
-
-CREATE VIEW Cp
-    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history, grade.average 
-    FROM student 
-    INNER JOIN grade ON student_id = grade_student 
-    WHERE student_class = 1
-    ORDER BY grade.average DESC;
-
-CREATE VIEW CE11
-    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history, grade.average 
-    FROM student 
-    INNER JOIN grade ON student_id = grade_student 
-    WHERE student_class = 2
-    ORDER BY grade.average DESC;
-    
-CREATE VIEW CE12 
-    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history, grade.average 
-    FROM student 
-    INNER JOIN grade ON student_id = grade_student 
-    WHERE student_class = 3
-    ORDER BY grade.average DESC;
-    
-CREATE VIEW CE13 
-    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history, grade.average 
-    FROM student 
-    INNER JOIN grade ON student_id = grade_student 
-    WHERE student_class = 4
-    ORDER BY grade.average DESC;
-    
-CREATE VIEW CE2 
-    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history, grade.average 
-    FROM student 
-    INNER JOIN grade ON student_id = grade_student 
-    WHERE student_class = 5
-    ORDER BY grade.average DESC;
-    
-CREATE VIEW cm1
-    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history,grade.average 
-    FROM student 
-    INNER JOIN grade ON student_id = grade_student 
-    WHERE student_class = 6
-    ORDER BY grade.average DESC;
-
-CREATE VIEW cm2
-    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history,grade.average 
-    FROM student 
-    INNER JOIN grade ON student_id = grade_student 
-    WHERE student_class = 7
-    ORDER BY grade.average DESC;
