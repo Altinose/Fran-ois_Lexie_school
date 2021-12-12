@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Menu</title>
-	<link rel="stylesheet" type="text/css" href="/static/front_menu.css">
+	<title>Grade</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="/static/header.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/header_footer.css">
+	<link rel="stylesheet" type="text/css" href="/static/grade_front.css">
 
 </head>
+
+<header>
+    <nav>
+        <label class="logo">Francois Lexis</label>
+        <ul>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Event</a></li>
+            <li><a href="#">Grade</a></li>
+            <li><a href="#">Email</a></li>
+            <li><a href="#">Timetable</a></li>
+        </ul>
+        <label id="icon">
+            Menu
+        </label>
+    </nav>
+
+</header>
+
+
 <body>
+
+	<div class="ecole"> </div>
+
+	<div class= title>MY GRADE</div>
+
 	<table>
-		<tr>
-			<td><a href="./name">Firstname</a></td>
-			<td><a href="./lastname">Lastname</a></td>
-			<td><a href="./math">mathematical grade</a></td>
-			<td><a href="./french">French grade</a></td>
-			<td><a href="./history">history grade</a></td>
+		<tr class="top">
+			<td><a href="./name">Firstname <img class="fleche" src="/static/grade_pict/fleche.png"></a></td>
+			<td><a href="./lastname">Lastname <img class="fleche" src="/static/grade_pict/fleche.png"></a></td>
+			<td><a href="./math">Mathematiques grade <img class="fleche" src="/static/grade_pict/fleche.png"></a></td>
+			<td><a href="./french">French grade <img class="fleche" src="/static/grade_pict/fleche.png"></a></td>
+			<td><a href="./history">History grade <img class="fleche" src="/static/grade_pict/fleche.png"></a></td>
 		</tr>
 	<% for (var g of grades)	{%>
 		<tr>
@@ -27,3 +54,9 @@
 
 </body>
 </html>
+
+<footer>
+	<div class="foot">Nom_de_leleve</div>
+	<div class="foot">®François Lexis</div>
+	<div><a href = "#"><img class="deco" src="/static/header_pict/oui.png"></a></div>
+</footer>
