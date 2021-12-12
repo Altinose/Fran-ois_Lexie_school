@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu</title>
+	<link rel="stylesheet" type="text/css" href="/static/front_menu.css">
+
+</head>
+<body>
+	<table>
+		<tr>
+			<td><a href="./name">Firstname</a></td>
+			<td><a href="./lastname">Lastname</a></td>
+			<td><a href="./math">mathematical grade</a></td>
+			<td><a href="./french">French grade</a></td>
+			<td><a href="./history">history grade</a></td>
+		</tr>
+	<% for (var g of grades)	{%>
+		<tr>
+		<td><%= g.student_first_name %></td>
+		<td><%= g.student_last_name %></td>
+        <td><%= g.grade_math %></td>
+        <td><%= g.grade_french %></td>
+		<td><%= g.grade_history %></td>
+		</tr>	
+	<% } %>
+	</table>
+
+</body>
+</html>
