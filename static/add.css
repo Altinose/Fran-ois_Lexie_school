@@ -8,7 +8,7 @@ nav, footer{
 
 li{
     display: inline-block;
-    margin-left: 7%;
+    margin-left: 1%;
     padding-left: 5%;
     padding-right: 5%;
     margin-top : 2.5%;
@@ -32,4 +32,14 @@ li{
 
   .button1{
       text-align: center;
+  }
+
+  select{
+      height : 20px;
+      width : 300px;
+  }
+
+  h1{
+      text-align: center;
+      margin-top: 30px;
   }

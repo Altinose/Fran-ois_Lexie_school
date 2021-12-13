@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Grade</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="/static/header.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/header_footer.css">
+	<link rel="stylesheet" type="text/css" href="/static/add.css">
+
+</head>
+
+<header>
+	<nav>
+        <label class="logo"><a href="/menu">Francois Lexis</a></label>
+        <ul>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/event">Event</a></li>
+            <li><a href="/grades/<%=User[0]%>/">Grade</a></li>
+            <li><a href="/email">Email</a></li>
+            <li><a href="/timetable">Timetable</a></li>
+        </ul>
+        <label id="icon">
+            Menu
+        </label>
+    </nav>
+
+</header>
+
+<body>
+
+    <div class="ecole"> </div>
+
+    <h1>Edit grade</h1>
+    <form>
+    <ul>
+		<li><select name="name" id="name">
+            <option value="">Student's name</option>
+        </select></li>
+		<li><select name="subject" id="subject">
+            <option value="">Select the subject</option>
+            <option value="math">Mathematiques</option>
+            <option value="histoyr">History</option>
+            <option value="french">French</option>
+        </select></li>
+		<li><input type="number"  id="grade" name="fname" class="fname" placeholder="Grade" maxlength="2"></li>
+
+
+    <div class=button1>
+    <input type="button" id="vehicle3" name="vehicle3" value="Create" class="button">
+</div>
+    </form>
+</body>
+
+
+
+<footer>
+	<div class="foot">Nom_de_leleve</div>
+	<div class="foot">®François Lexis</div>
+	<div><a href = "#"><img class="deco" src="/static/header_pict/oui.png"></a></div>
+</footer>
+</html>
