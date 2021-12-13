@@ -6,7 +6,7 @@ module.exports = {
     app.use(passport.initialize());
     app.use(passport.session());
     passport.serializeUser(function (user, done) {
-      done(null, user.user_name);
+      done(null, user.login_user_name);
     });
     passport.deserializeUser(async function (username, done) {
       let user = await usersRepo.getOneUser(username);
@@ -19,13 +19,13 @@ module.exports = {
     return function (request, response, next) {
       if (request.isAuthenticated()) {
         if (role) {
-          if (role === request.user.user_role) { // TODO: RBAC/HIERARCHY
-            return next(err);
+          if (role === request.user.login_level) { // TODO: RBAC/HIERARCHY
+            return next();
           } else {
             return response.end("401 Unautorized (bad user level)");
           }
         } else {
-          return next(err);
+          return next();
         }
       } else {
         response.redirect("/"); // not authenticated at all

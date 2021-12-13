@@ -114,6 +114,23 @@ module.exports = {
 		} catch (err) {
 			throw err;
 		}
-	}
+	},
+
+	async getuserinfo(login_id) {
+		try {
+			console.log(login_id);
+			conn = await pool.getConnection();
+			sql = "SELECT * FROM STUDENT WHERE student_login = ?"
+			const rows = await conn.query(sql, login_id);
+			for (var q of rows) {
+				userinfo = [q.student_id, q.student_first_name, q.student_last_name, q.student_class];
+			}
+			console.log("aaa: " + userinfo);
+			conn.end();
+			return userinfo;
+		} catch (err) {
+			throw err;
+		}
+	},
 
 };
