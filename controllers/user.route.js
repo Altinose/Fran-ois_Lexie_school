@@ -41,11 +41,33 @@ router.get("/welcome", showwelcome);
 
 router.get("/", redir);
 
-function timetabledisplay(request, response) {
-    response.render("timetable");
+
+async function timetabledisplay(request, response) {
+    if (request.user == undefined) {
+        response.redirect("/");
+    } else {
+        data = await getuserinfo(request.user.login_id);
+        console.log(data);
+        response.render("timetable", { "User": data });
+
+    }
 }
 
 async function menudisplay(request, response) {
+    if (request.user == undefined) {
+        response.redirect("/");
+    } else {
+        if (request.user.login_level == "admin") {
+            response.redirect("/menu_admin");
+        }
+        else {
+            response.redirect("/menu");
+        }
+    }
+
+
+
+
     if (request.user == undefined) {
         response.redirect("/");
     } else {
@@ -91,76 +113,84 @@ async function emaildisplay(request, response) {
 
 
 function redirtomenu(request, response) {
-    response.redirect("/menu");
-}
-
-function moovetograde(request, response) {
-    var student_id = request.params.student_id;
-    response.redirect("../" + student_id + "/name");
-
-}
-async function grades(request, response) {
-
     if (request.user == undefined) {
         response.redirect("/");
     } else {
+        if (request.user.login_level == "admin") {
+            response.redirect("/menu_admin");
+        }
+        else {
+            response.redirect("/menu");
+        }
+    }
+
+    function moovetograde(request, response) {
         var student_id = request.params.student_id;
-        var filter = request.params.filter;
-        var idclass = await gradeRepo.getStudentclass(student_id);
-        var grades = await gradeRepo.grade(filter, idclass);
-        data = await getuserinfo(request.user.login_id);
-        console.log(data);
-        response.render("grade", { "User": data, "grades": grades });
+        response.redirect("../" + student_id + "/name");
 
     }
+    async function grades(request, response) {
 
-}
-
-
-function showwelcome(request, response) {
-    console.log(request.user);
-    response.render("welcome");
-}
-function redir(request, responce) {
-    responce.redirect("welcome");
-}
-
-function encryption(request, response) {
-    for (var i = 0; i <= 77; i++) {
-        gradeRepo.encryptionmdp(i);
-
-    }
-    response.redirect("/");
-
-}
-
-
-
-async function checkconnexion(request, response) {
-
-    console.log(request.body.username, request.body.passwd);
-    areValid = await gradeRepo.areValidCredentials(request.body.username, request.body.passwd);
-    console.log(areValid);
-    if (areValid) {
-        user = await gradeRepo.getOneUser(request.body.username);
-        await request.login(user, function (err) {
-            if (err) { return next(err); }
-        });
-        console.log(user);
-        if (user.login_level === "admin") {
-            return response.redirect("/connexion/admin");
+        if (request.user == undefined) {
+            response.redirect("/");
         } else {
-            return response.redirect("/connexion/user");
+            var student_id = request.params.student_id;
+            var filter = request.params.filter;
+            var idclass = await gradeRepo.getStudentclass(student_id);
+            var grades = await gradeRepo.grade(filter, idclass);
+            data = await getuserinfo(request.user.login_id);
+            console.log(data);
+            response.render("grade", { "User": data, "grades": grades });
+
         }
 
-    } else {
-        response.send("Invalid credentials provided");
     }
 
-}
+
+    function showwelcome(request, response) {
+        console.log(request.user);
+        response.render("welcome");
+    }
+    function redir(request, responce) {
+        responce.redirect("welcome");
+    }
+
+    function encryption(request, response) {
+        for (var i = 0; i <= 77; i++) {
+            gradeRepo.encryptionmdp(i);
+
+        }
+        response.redirect("/");
+
+    }
+
+
+
+    async function checkconnexion(request, response) {
+
+        console.log(request.body.username, request.body.passwd);
+        areValid = await gradeRepo.areValidCredentials(request.body.username, request.body.passwd);
+        console.log(areValid);
+        if (areValid) {
+            user = await gradeRepo.getOneUser(request.body.username);
+            await request.login(user, function (err) {
+                if (err) { return next(err); }
+            });
+            console.log(user);
+            if (user.login_level === "admin") {
+                return response.redirect("/connexion/admin");
+            } else {
+                return response.redirect("/connexion/user");
+            }
+
+        } else {
+            response.send("Invalid credentials provided");
+        }
+
+    }
 
 
 
 
 
-module.exports = router;
+    module.exports = router;
