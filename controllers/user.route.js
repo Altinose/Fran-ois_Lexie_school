@@ -11,13 +11,13 @@ const userauth = require('../utils/users.auth');
 router.get("/grades/:student_id/:filter", grades);
 router.get("/grades/:student_id", moovetograde);
 
-//router.get("/encryption", encryption);
+router.get("/encryption", encryption);
 router.get("/connexion", connectiondisplay);
 
 router.post("/connexion/check", checkconnexion);
 
-router.post("/connexion/admin",/* userauth.checkAuthentication("admin"), */redirtomenu);
-router.get("/connexion/user", /*userauth.checkAuthentication("user"),*/ redirtomenu);
+router.post("/connexion/admin", userauth.checkAuthentication("admin"), redirtomenu);
+router.get("/connexion/user", userauth.checkAuthentication("user"), redirtomenu);
 
 
 
@@ -90,16 +90,16 @@ function showwelcome(request, response) {
 function redir(request, responce) {
     responce.redirect("welcome");
 }
-/*
+
 function encryption(request, response) {
-    for (var i=0;i<=77; i++){
-    gradeRepo.encryptionmdp(i);
-    
+    for (var i = 0; i <= 77; i++) {
+        gradeRepo.encryptionmdp(i);
+
     }
     response.redirect("/");
 
 }
-*/
+
 
 
 async function checkconnexion(request, response) {
@@ -111,7 +111,7 @@ async function checkconnexion(request, response) {
         await request.login(user, function (err) {
             if (err) { return next(err); }
         });
-        console.log(user); 
+        console.log(user);
         if (user.login_level === "admin") {
             return response.redirect("/connexion/admin");
         } else {
