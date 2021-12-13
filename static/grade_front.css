@@ -1,11 +1,55 @@
-.topnav{
+nav, footer{
     background-color : #bb8c58;
   }
   
-  .ecole{
+.ecole{
     background-image: url("menu_pict/enfants-heureux-ecole-panorama.jpg");
-  }
-  
-  footer{
-    background-color: #bb8c58;
-  }
+}
+
+@media (max-width:909px){
+  nav a:hover{
+    color:#bb8c58;
+  }}
+
+.title{
+  font-size: 80px;
+  text-align: center;
+  margin-top : 50px;
+  margin-bottom : 70px;
+  color : #bb8c58;
+}
+
+table{
+  text-align: center;
+  margin: auto;
+  table-layout: fixed;
+  width: 95%;
+  font-size: 20px;
+  margin-bottom: 50px;
+  border-collapse: collapse;
+  border : 1px solid #bb8c58;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+tr{
+  height : 40px;
+}
+
+td{
+  border-collapse: collapse;
+  border : 2px solid #bb8c58;
+}
+
+a{
+  color : black;
+}
+
+.top{
+  background-color: #bb8c58;
+  color : white;
+}
+
+.fleche{
+  width: 5%;
+}

@@ -1,13 +1,14 @@
 .photo1,.photo2,.photo3,.photo4{
 	width : 50%;
 	background-size: cover;
-	height: 20em;
+	min-height: 20em;
 }
 
 .photo1{	
 	float : left;
 	background-image: url("menu_pict/jolie-petite-fille-qui-ajuste-sa-montre_23-2148349788.jpg");
 }
+
 
 .photo3{
 	float : left;

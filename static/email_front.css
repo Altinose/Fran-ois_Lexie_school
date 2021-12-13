@@ -9,3 +9,28 @@
   footer{
     background-color: #827789;
   }
+
+form{
+  text-align: center;
+  margin-top: 60px;
+}
+
+.fname{
+  width : 80%;
+  height: 50px;
+}
+
+.discussion{
+  min-height: 100px;
+  border : 1px solid #827789;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 50px;
+}
+
+.button{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width : 100px;
+  background-color: #827789;
+}

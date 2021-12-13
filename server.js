@@ -39,3 +39,4 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json(), bodyParser.urlencoded({ extended: true }));
 app.use("/static", express.static(__dirname + '/static'));
 app.use("/", require("./controllers/user.route"));
+
