@@ -108,7 +108,9 @@ async function checkconnexion(request, response) {
     console.log(areValid);
     if (areValid) {
         user = await gradeRepo.getOneUser(request.body.username);
-        //await request.login(user);
+        await request.login(user, function (err) {
+            if (err) { return next(err); }
+        });
         console.log(user); 
         if (user.login_level === "admin") {
             return response.redirect("/connexion/admin");
