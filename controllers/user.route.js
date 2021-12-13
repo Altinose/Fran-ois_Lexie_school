@@ -1,4 +1,6 @@
 const express = require('express');
+const { appendFile } = require('fs');
+const passport = require('passport');
 const router = express.Router();
 
 const gradeRepo = require('../utils/user.repository');
@@ -14,8 +16,14 @@ router.get("/connexion", connectiondisplay);
 
 router.post("/connexion/check", checkconnexion);
 
-router.get("/connexion/admin", userauth.checkAuthentication("admin"), redir);
-router.get("/connexion/user", userauth.checkAuthentication("user"), redir);
+router.post("/connexion/admin",/* userauth.checkAuthentication("admin"), */redirtomenu);
+router.get("/connexion/user", /*userauth.checkAuthentication("user"),*/ redirtomenu);
+
+
+
+
+
+//############ display ######################
 
 router.get("/email", emaildisplay);
 
@@ -32,7 +40,6 @@ router.get("/welcome", showwelcome);
 
 router.get("/", redir);
 
-
 function timetabledisplay(request, response) {
     response.render("timetable");
 }
@@ -42,8 +49,10 @@ function menudisplay(request, response) {
 }
 
 
-function eventdisplay(request, response) {
-    response.render("event");
+async function eventdisplay(request, response) {
+    data = request.user
+    console.log(data);
+    response.render("event", { "User": data });
 }
 function connectiondisplay(request, response) {
     response.render("connexion");
@@ -51,6 +60,12 @@ function connectiondisplay(request, response) {
 
 function emaildisplay(request, response) {
     response.render("email");
+}
+//########################################
+
+
+function redirtomenu(request, response) {
+    response.redirect("/menu");
 }
 
 function moovetograde(request, response) {
@@ -68,6 +83,8 @@ async function grades(request, response) {
 
 
 function showwelcome(request, response) {
+    console.log(request.session);
+    console.log(request.user);
     response.render("welcome");
 }
 function redir(request, responce) {
@@ -87,16 +104,15 @@ function encryption(request, response) {
 
 async function checkconnexion(request, response) {
     console.log(request.body.username, request.body.passwd);
-
     areValid = await gradeRepo.areValidCredentials(request.body.username, request.body.passwd);
     console.log(areValid);
     if (areValid) {
         user = await gradeRepo.getOneUser(request.body.username);
-        console.log(user);
+        //await request.login(user);
+        console.log(user); 
         if (user.login_level === "admin") {
             return response.redirect("/connexion/admin");
         } else {
-            console.log("bb");
             return response.redirect("/connexion/user");
         }
 

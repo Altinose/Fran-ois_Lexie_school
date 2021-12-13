@@ -1,4 +1,3 @@
-const session = require("express-session");
 const passport = require("passport");
 const usersRepo = require("../utils/user.repository.js");
 
@@ -14,17 +13,19 @@ module.exports = {
       done(null, user);
     });
   },
+
+
   checkAuthentication(role) {
     return function (request, response, next) {
       if (request.isAuthenticated()) {
         if (role) {
-          if (role === request.user.user_role) {// TODO: RBAC/HIERARCHY
-            return next();
+          if (role === request.user.user_role) { // TODO: RBAC/HIERARCHY
+            return next(err);
           } else {
             return response.end("401 Unautorized (bad user level)");
           }
         } else {
-          return next();
+          return next(err);
         }
       } else {
         response.redirect("/"); // not authenticated at all

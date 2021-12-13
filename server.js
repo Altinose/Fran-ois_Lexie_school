@@ -3,10 +3,9 @@ const dotenv = require('dotenv');
 const app = express();
 dotenv.config();
 
-app.listen(process.env.WEB_PORT,
 
-    function () { console.log("Listening at " + process.env.WEB_PORT); }
-);
+
+
 
 const session = require("express-session");
 app.use(session({
@@ -19,6 +18,12 @@ app.use(session({
 // add after SESSION
 const auth = require("./utils/users.auth");
 auth.initialization(app);
+
+// add first
+app.listen(process.env.SERVER_PORT,
+    function () { console.log("Server lisening at:" + process.env.SERVER_PORT); }
+);
+
 
 // add first
 
