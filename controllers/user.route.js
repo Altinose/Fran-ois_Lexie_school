@@ -1,4 +1,5 @@
 const express = require('express');
+const { route } = require('express/lib/router');
 const { appendFile } = require('fs');
 const passport = require('passport');
 const { getuserinfo } = require('../utils/user.repository');
@@ -30,9 +31,10 @@ router.get("/email", emaildisplay);
 
 router.get("/event", eventdisplay);
 
-
+router.get("/editgrade", editgradedisplay)
 
 router.get("/menu", menudisplay);
+router.get("/addstudent", addstudentdisplay);
 
 router.get("/timetable", timetabledisplay)
 
@@ -41,8 +43,16 @@ router.get("/welcome", showwelcome);
 
 router.get("/", redir);
 
-function timetabledisplay(request, response) {
-    response.render("timetable");
+
+async function timetabledisplay(request, response) {
+    if (request.user == undefined) {
+        response.redirect("/");
+    } else {
+        data = await getuserinfo(request.user.login_id);
+        console.log(data);
+        response.render("timetable", { "User": data });
+
+    }
 }
 
 async function menudisplay(request, response) {
@@ -87,13 +97,41 @@ async function emaildisplay(request, response) {
 
     }
 }
+
+
+async function editgradedisplay(request, response) {
+    if (request.user == undefined) {
+        response.redirect("/");
+    } else {
+        data = await getuserinfo(request.user.login_id);
+        response.render("editgrade", { "User": data });
+
+    }
+}
+async function addstudentdisplay(request, response) {
+    if (request.user == undefined) {
+        response.redirect("/");
+    } else {
+        data = await getuserinfo(request.user.login_id);
+        response.render("addstudent", { "User": data });
+
+    }
+}
 //########################################
 
 
 function redirtomenu(request, response) {
-    response.redirect("/menu");
+    if (request.user == undefined) {
+        response.redirect("/");
+    } else {
+        if (request.user.login_level == "admin") {
+            response.redirect("/menu_admin");
+        }
+        else {
+            response.redirect("/menu");
+        }
+    }
 }
-
 function moovetograde(request, response) {
     var student_id = request.params.student_id;
     response.redirect("../" + student_id + "/name");
@@ -158,9 +196,5 @@ async function checkconnexion(request, response) {
     }
 
 }
-
-
-
-
 
 module.exports = router;
