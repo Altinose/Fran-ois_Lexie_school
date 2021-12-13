@@ -31,3 +31,4 @@ app.use(bodyParser.json(), bodyParser.urlencoded({ extended: true }));
 // * app.use("/cars", require("./controllers/cars.route"));
 app.use("/static", express.static(__dirname + '/static'));
 app.use("/", require("./controllers/user.route"));
+
