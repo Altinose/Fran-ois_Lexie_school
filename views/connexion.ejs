@@ -9,13 +9,13 @@
 <body>
 <div class="formulaire">
 	<div class="titre"><img src = "/static/header_pict/pngegg.png" class="logo">François Lexis</div>
-	<form>
+	<form method="POST" action="/connexion/check">
 		<label for="fname">Login</label>
 		<br>
-		<input type="text" placeholder="Enter your login" id="fname" name="fname" class="input"><br><br>
-		<label for="lname">Password</label>
+		<input type="text" placeholder="Enter your login" id="fname" name="username" class="input" required><br><br>
+		<label for="passwd">Password</label>
 		<br>
-		<input type="password" placeholder="Enter your password" id="lname" name="lname" class="input"><br><br>
+		<input type="password" placeholder="Enter your password" id="passwd" name="passwd" class="input" required><br><br>
 		<input type="submit" value="Connexion" class="button">
 		<br><br>
 		<div class="down_logo">®François Lexis</div>
