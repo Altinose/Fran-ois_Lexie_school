@@ -17,6 +17,7 @@ router.get("/email", emaildisplay);
 router.get("/event", eventdisplay);
 
 
+
 router.get("/menu", menudisplay);
 
 router.get("/timetable", timetabledisplay)
@@ -34,6 +35,7 @@ function timetabledisplay(request, response) {
 function menudisplay(request, response) {
     response.render("menu");
 }
+
 
 function eventdisplay(request, response) {
     response.render("event");
