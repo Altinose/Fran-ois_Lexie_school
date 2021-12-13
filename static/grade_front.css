@@ -53,3 +53,17 @@ a{
 .fleche{
   width: 5%;
 }
+
+li{
+  display: inline-block;
+  margin-left: 13%;
+  background-color: #bb8c58;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top : 2.5%;
+  margin-bottom: 2.5%;
+  height: 20px;
+  vertical-align: middle;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
