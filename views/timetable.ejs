@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Contact my teacher</title>
-	<link rel="stylesheet" type="text/css" href="/static/header.css">
+	<title>Timetable</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="/static/header.js"></script>
 	<link rel="stylesheet" type="text/css" href="/static/timetable_front.css">
+	<link rel="stylesheet" type="text/css" href="/staticheader_footer.css">
 
 </head>
+
 <header>
-	<div class="eleve">Nom de l'élève</div>
-	<div class="middle"><img class ="logo" src="header_pict/pngegg.png"/>
-		<a href = "menu.html"><div class = "text_header">François Lexis</div></a></div>
-	<div><a href = "menu.html"><img class="deco" src="header_pict/oui.png"></a></div>		
+    <nav>
+        <label class="logo">Francois Lexis</label>
+        <ul>
+			<li><a href="menu.html">Menu</a></li>
+            <li><a href="event.html">Event</a></li>
+            <li><a href="grade.html">Grade</a></li>
+            <li><a href="email.html">Email</a></li>
+            <li><a href="timetable.html">Timetable</a></li>
+        </ul>
+        <label id="icon">
+            Menu
+        </label>
+    </nav>
 </header>
+
 <body>
+
+	<div class="ecole">  </div>
+
 <br>
 	<br>
 	<div class= "title">Time table of the week</div>
@@ -35,6 +51,7 @@
 </body>
 
 <footer>
-	<div class="down_logo">®François Lexis</div>
-	
+	<div class="foot">Nom_de_leleve</div>
+	<div class="foot">®François Lexis</div>
+	<div><a href = "menu.html"><img class="deco" src="header_pict/oui.png"></a></div>
 </footer>
