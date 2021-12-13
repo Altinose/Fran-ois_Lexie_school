@@ -1,3 +1,4 @@
+
 CREATE DATABASE if not exists webSiteSchool;
 USE webSiteSchool;
 
@@ -10,8 +11,8 @@ DROP TABLE if exists grade;
 CREATE TABLE login(
     login_id int AUTO_INCREMENT PRIMARY KEY,
     login_user_name varchar(100),
-    login_password varchar(100),
-    login_level varchar(100)
+*    login_password varchar(100),
+   login_level varchar(100)
 );
 
 CREATE TABLE worker (

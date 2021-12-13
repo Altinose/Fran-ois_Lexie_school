@@ -52,17 +52,85 @@ module.exports = {
 			} else if (id == "lastname") {
 				sql = "SELECT * FROM student INER JOIN grade ON student_id = grade_student  WHERE student_class = ? ORDER BY student_last_name ASC;";
 			}
-
-
-
 			const rows = await conn.query(sql, [student_class]);
-
-
 			conn.end();
 			console.log("ROWS FETCHED: " + rows.length);
 			return rows;
 		} catch (err) {
 			throw err;
 		}
-	}
+	},
+
+	async getOneUser(username) {
+		try {
+			conn = await pool.getConnection();
+			sql = "SELECT login_id,login_user_name,login_level FROM login WHERE login_user_name = ? "; // must leave out the password+hash
+			const rows = await conn.query(sql, username);
+			conn.end();
+			if (rows.length == 1) {
+				return rows[0];
+			} else {
+				return false;
+			}
+		} catch (err) {
+			throw err;
+		}
+	},
+
+	async areValidCredentials(username, password) {
+		try {
+			conn = await pool.getConnection();
+			sql = "SELECT * FROM login WHERE login_user_name = ? AND login_password = sha2(concat(login_user_name, ?), 224) "; // TODO: better salt+pw hash!
+			const rows = await conn.query(sql, [username, password]);
+			conn.end();
+			console.log("a");
+
+			if (rows.length == 1 && rows[0].login_user_name === username) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (err) {
+			throw err;
+		}
+	},
+	//! to encrypte first all mdp (problem of the setup)
+	async encryptionmdp(id) {
+		try {
+			conn = await pool.getConnection();
+			sql = "Select * FROM login WHERE login_id = ?";
+			var mdp = await conn.query(sql, id);
+			for (var q of mdp) {
+				login_password = q.login_password;
+			}
+			console.log(login_password);
+
+
+			sql = "UPDATE login SET login_password = sha2(concat(login_user_name,?),224) WHERE login_id = ?  "; // TODO: better salt+pw hash!
+			const rows = await conn.query(sql, [login_password, id]);
+
+			conn.end();
+
+		} catch (err) {
+			throw err;
+		}
+	},
+
+	async getuserinfo(login_id) {
+		try {
+			console.log(login_id);
+			conn = await pool.getConnection();
+			sql = "SELECT * FROM STUDENT WHERE student_login = ?"
+			const rows = await conn.query(sql, login_id);
+			for (var q of rows) {
+				userinfo = [q.student_id, q.student_first_name, q.student_last_name, q.student_class];
+			}
+			console.log("aaa: " + userinfo);
+			conn.end();
+			return userinfo;
+		} catch (err) {
+			throw err;
+		}
+	},
+
 };
