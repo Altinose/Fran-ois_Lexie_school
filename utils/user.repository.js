@@ -60,7 +60,7 @@ module.exports = {
 			throw err;
 		}
 	},
-	
+
 	async getOneUser(username) {
 		try {
 			conn = await pool.getConnection();
@@ -94,7 +94,7 @@ module.exports = {
 			throw err;
 		}
 	},
-	/* //! to encrypte first all mdp (problem of the setup)
+	//! to encrypte first all mdp (problem of the setup)
 	async encryptionmdp(id) {
 		try {
 			conn = await pool.getConnection();
@@ -115,5 +115,5 @@ module.exports = {
 			throw err;
 		}
 	}
-	*/
+
 };
