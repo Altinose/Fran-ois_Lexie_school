@@ -74,6 +74,21 @@ module.exports = {
 			throw err;
 		}
 	},
+	async getOneUserwithid(studentid) {
+		try {
+			conn = await pool.getConnection();
+			sql = "SELECT login_id,login_user_name,login_level FROM login WHERE login_id = ? "; // must leave out the password+hash
+			const rows = await conn.query(sql, studentid);
+			conn.end();
+			if (rows.length > 0) {
+				return true
+			} else {
+				return false;
+			}
+		} catch (err) {
+			throw err;
+		}
+	},
 
 	async areValidCredentials(username, password) {
 		try {
@@ -217,6 +232,24 @@ module.exports = {
 			sql = "UPDATE grade SET grade_french = ? WHERE grade_student = ?";
 		}
 		const line = await conn.query(sql, [grade, grade_student]);
+	},
+
+	async newstudent(student_login, student_mdp, student_name, student_lastname, student_phone, classnb, grade_math, grade_french, grade_history) {
+		i = 0;
+
+		do {
+			i++;
+			find = await this.getOneUserwithid(i);
+		} while (find == true);
+		sql = "INSERT INTO login VALUES (?,?,sha2(concat(?,?),224),'user')";
+		const file = await conn.query(sql, [i, student_login, student_login, student_mdp]);
+		sql = "INSERT INTO student VALUES (?,?,?,?,?,?)";
+		const rows = await conn.query(sql, [i, student_name, student_lastname, classnb, student_phone, i]);
+		sql = "INSERT INTO grade VALUES (?,?,?,?,?)";
+		const line = await conn.query(sql, [i, i, grade_math, grade_french, grade_history]);
+
+
+
 	}
 
 };

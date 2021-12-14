@@ -7,6 +7,15 @@ DROP TABLE if exists class;
 DROP TABLE if exists worker;
 DROP TABLE if exists login;
 
+
+DROP VIEW if EXISTS Cp;
+DROP VIEW if EXISTS CE11;
+DROP VIEW if EXISTS CE12 ;
+DROP VIEW if EXISTS CE13 ;
+DROP VIEW if EXISTS CE2 ;
+DROP VIEW if EXISTS cm1;
+DROP VIEW if EXISTS cm2;
+
 CREATE TABLE login(
     login_id int AUTO_INCREMENT PRIMARY KEY,
     login_user_name varchar(100),
@@ -297,3 +306,53 @@ INSERT INTO grade VALUES
 	(69,69,10,6,2),
 	(70,70,4,2,6);
 
+
+
+CREATE VIEW Cp
+    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history
+    FROM student 
+    INNER JOIN grade ON student_id = grade_student 
+    WHERE student_class = 1
+    ORDER BY student_first_name DESC;
+
+CREATE VIEW CE11
+    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history
+    FROM student 
+    INNER JOIN grade ON student_id = grade_student 
+    WHERE student_class = 2
+    ORDER BY student_first_name DESC;
+    
+CREATE VIEW CE12 
+    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history 
+    FROM student 
+    INNER JOIN grade ON student_id = grade_student 
+    WHERE student_class = 3
+    ORDER BY student_first_name DESC;
+    
+CREATE VIEW CE13 
+    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history
+    FROM student 
+    INNER JOIN grade ON student_id = grade_student 
+    WHERE student_class = 4
+    ORDER BY student_first_name DESC;
+    
+CREATE VIEW CE2 
+    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history 
+    FROM student 
+    INNER JOIN grade ON student_id = grade_student 
+    WHERE student_class = 5
+    ORDER BY student_first_name DESC;
+    
+CREATE VIEW cm1
+    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history 
+    FROM student 
+    INNER JOIN grade ON student_id = grade_student 
+    WHERE student_class = 6
+    ORDER BY student_first_name DESC;
+
+CREATE VIEW cm2
+    AS SELECT student_first_name, student_last_name, grade.grade_math, grade.grade_french, grade.grade_history
+    FROM student 
+    INNER JOIN grade ON student_id = grade_student 
+    WHERE student_class = 7
+    ORDER BY student_first_name DESC;
