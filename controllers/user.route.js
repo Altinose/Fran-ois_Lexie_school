@@ -2,7 +2,7 @@ const express = require('express');
 const { route } = require('express/lib/router');
 const { appendFile } = require('fs');
 const passport = require('passport');
-const { getuserinfo } = require('../utils/user.repository');
+const { getuserinfo, grade, moddifgrade } = require('../utils/user.repository');
 const router = express.Router();
 
 const gradeRepo = require('../utils/user.repository');
@@ -39,7 +39,7 @@ router.get("/addstudent", addstudentdisplay);
 router.get("/timetable", timetabledisplay);
 
 router.get("/editgrade", addagrade);
-
+router.post("/editgrade/value", calculing);
 
 
 
@@ -200,6 +200,28 @@ async function addagrade(request, response) {
             data = await gradeRepo.getadmininfo(request.user.login_id, request.user.login_level);
             var grades = await gradeRepo.grade(filter, data[3]);
             response.render("editgrade", { "User": data, "grades": grades });
+        } else {
+            response.redirect("/");
+        }
+
+    }
+}
+async function calculing(request, response) {
+    if (request.user == undefined) {
+        response.redirect("/");
+    } else {
+        if (request.user.login_level == "admin") {
+            thestudent_id = request.body.name;
+            filter = request.body.subject;
+            studentgrade = request.body.grade;
+
+            student = await gradeRepo.gettheuserinfo(thestudent_id);
+            console.log("student note" + student[filter]);
+            console.log("new note" + studentgrade);
+
+            finalgrade = (parseInt(student[filter]) + parseInt(studentgrade)) / 2;
+            await gradeRepo.moddifgrade(thestudent_id, filter, finalgrade)
+            response.redirect("/menu");
         } else {
             response.redirect("/");
         }
