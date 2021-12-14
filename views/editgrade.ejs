@@ -31,23 +31,26 @@
     <div class="ecole"> </div>
 
     <h1>Edit grade</h1>
-    <form>
+    <form  method="POST" action="/editgrade/value">
     <ul>
 		<li><select name="name" id="name">
             <option value="">Student's name</option>
+            <% for(var g of grades){%>
+            <option value="<%=g.student_id%>"><%= g.student_first_name %></option>
+            <% } %> 
         </select></li>
 		<li><select name="subject" id="subject">
             <option value="">Select the subject</option>
             <option value="math">Mathematiques</option>
-            <option value="histoyr">History</option>
+            <option value="history">History</option>
             <option value="french">French</option>
         </select></li>
 		<li><input type="number"  id="grade" name="fname" class="fname" placeholder="Grade" maxlength="2"></li>
 
 
     <div class=button1>
-    <input type="button" id="vehicle3" name="vehicle3" value="Create" class="button">
-</div>
+    <input type="submit" value="Create" class="button">
+    </div>
     </form>
 </body>
 

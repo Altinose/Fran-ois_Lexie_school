@@ -32,12 +32,15 @@ router.get("/email", emaildisplay);
 
 router.get("/event", eventdisplay);
 
-router.get("/editgrade", editgradedisplay)
 
 router.get("/menu", menudisplay);
 router.get("/addstudent", addstudentdisplay);
 
-router.get("/timetable", timetabledisplay)
+router.get("/timetable", timetabledisplay);
+
+router.get("/editgrade", addagrade);
+
+
 
 
 router.get("/welcome", showwelcome);
@@ -181,10 +184,27 @@ async function grades(request, response) {
             data = await gradeRepo.gettheuserinfo(request.user.login_id);
 
         }
-        console.log("aller");
+
         response.render("grade", { "User": data, "grades": grades });
     }
 
+}
+
+
+async function addagrade(request, response) {
+    if (request.user == undefined) {
+        response.redirect("/");
+    } else {
+        if (request.user.login_level == "admin") {
+            filter = "name"
+            data = await gradeRepo.getadmininfo(request.user.login_id, request.user.login_level);
+            var grades = await gradeRepo.grade(filter, data[3]);
+            response.render("editgrade", { "User": data, "grades": grades });
+        } else {
+            response.redirect("/");
+        }
+
+    }
 }
 
 
