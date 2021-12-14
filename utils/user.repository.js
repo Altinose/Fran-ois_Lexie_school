@@ -35,10 +35,8 @@ module.exports = {
 
 	async grade(id, user) {
 		try {
-			for (var q of user) {
-				student_class = q.student_class;
-			}
-			console.log(id);
+
+			console.log("ici" + id);
 
 			conn = await pool.getConnection();
 			if (id == "math") {
@@ -52,7 +50,7 @@ module.exports = {
 			} else if (id == "lastname") {
 				sql = "SELECT * FROM student INER JOIN grade ON student_id = grade_student  WHERE student_class = ? ORDER BY student_last_name ASC;";
 			}
-			const rows = await conn.query(sql, [student_class]);
+			const rows = await conn.query(sql, [user]);
 			conn.end();
 			console.log("ROWS FETCHED: " + rows.length);
 			return rows;
@@ -116,14 +114,20 @@ module.exports = {
 		}
 	},
 
-	async getuserinfo(login_id) {
+	async gettheuserinfo(login_id) {
 		try {
 			console.log(login_id);
 			conn = await pool.getConnection();
 			sql = "SELECT * FROM STUDENT WHERE student_login = ?"
 			const rows = await conn.query(sql, login_id);
 			for (var q of rows) {
-				userinfo = [q.student_id, q.student_first_name, q.student_last_name, q.student_class];
+				userinfo = [
+					q.student_id,
+					q.student_first_name,
+					q.student_last_name,
+					q.student_class,
+					login_id,
+				];
 			}
 			console.log("aaa: " + userinfo);
 			conn.end();
@@ -132,5 +136,33 @@ module.exports = {
 			throw err;
 		}
 	},
+
+	async getadmininfo(login_id, login_level) {
+		try {
+			console.log(login_id);
+			conn = await pool.getConnection();
+			sql = "SELECT * FROM worker WHERE worker_login = ?"
+			const rows = await conn.query(sql, login_id);
+			for (var q of rows) {
+				userinfo = [q.worker_id,
+				q.worker_firstname,
+				q.worker_lastname];
+			}
+			sql = "SELECT * FROM class WHERE class_worker = ?"
+			const line = await conn.query(sql, userinfo[0]);
+
+
+			for (var q of line) {
+				userinfo.push(q.class_id, q.class_level);
+			}
+			userinfo.push(login_level);
+			
+			console.log("aaa: " + userinfo);
+			conn.end();
+			return userinfo;
+		} catch (err) {
+			throw err;
+		}
+	}
 
 };
