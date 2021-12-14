@@ -12,6 +12,7 @@ const userauth = require('../utils/users.auth');
 
 router.get("/grades/:student_id/:filter", grades);
 router.get("/grades/:student_id", moovetograde);
+router.get("/supp/:student_id", suppstudent)
 
 router.get("/encryption", encryption);
 router.get("/connexion", connectiondisplay);
@@ -128,7 +129,6 @@ function redirtomenu(request, response) {
         response.redirect("/");
     } else {
         if (request.user.login_level == "admin") {
-
             response.redirect("/menu_admin");
         }
         else {
@@ -146,6 +146,21 @@ async function moovetograde(request, response) {
 
 
 }
+
+
+function suppstudent(request, response) {
+    student_id = request.params.student_id;
+    if (request.user.login_level == "admin") {
+        gradeRepo.deletestudent(student_id);
+        var student_id = request.params.student_id;
+        response.redirect("/grades/" + student_id + "/name");
+
+    }
+    response.redirect("/");
+}
+
+
+
 async function grades(request, response) {
 
     if (request.user == undefined) {

@@ -156,13 +156,23 @@ module.exports = {
 				userinfo.push(q.class_id, q.class_level);
 			}
 			userinfo.push(login_level);
-			
+
 			console.log("aaa: " + userinfo);
 			conn.end();
 			return userinfo;
 		} catch (err) {
 			throw err;
 		}
+
+	},
+	async deletestudent(studentid) {
+		sql = "DELETE FROM grade WHERE grade_id = ?"
+		const line = await conn.query(sql, studentid);
+		sql = "DELETE FROM student WHERE student_login = ?"
+		const line2 = await conn.query(sql, studentid);
+		sql = "DELETE FROM login WHERE login_id = ?"
+		const line3 = await conn.query(sql, studentid);
 	}
+
 
 };
