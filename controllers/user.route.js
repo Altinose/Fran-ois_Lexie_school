@@ -2,7 +2,7 @@ const express = require('express');
 const { route } = require('express/lib/router');
 const { appendFile } = require('fs');
 const passport = require('passport');
-const { getuserinfo } = require('../utils/user.repository');
+const { getuserinfo, grade, moddifgrade } = require('../utils/user.repository');
 const router = express.Router();
 
 const gradeRepo = require('../utils/user.repository');
@@ -12,6 +12,7 @@ const userauth = require('../utils/users.auth');
 
 router.get("/grades/:student_id/:filter", grades);
 router.get("/grades/:student_id", moovetograde);
+router.get("/supp/:student_id", suppstudent)
 
 router.get("/encryption", encryption);
 router.get("/connexion", connectiondisplay);
@@ -31,12 +32,15 @@ router.get("/email", emaildisplay);
 
 router.get("/event", eventdisplay);
 
-router.get("/editgrade", editgradedisplay)
 
 router.get("/menu", menudisplay);
 router.get("/addstudent", addstudentdisplay);
 
-router.get("/timetable", timetabledisplay)
+router.get("/timetable", timetabledisplay);
+
+router.get("/editgrade", addagrade);
+router.post("/editgrade/value", calculing);
+
 
 
 router.get("/welcome", showwelcome);
@@ -128,7 +132,6 @@ function redirtomenu(request, response) {
         response.redirect("/");
     } else {
         if (request.user.login_level == "admin") {
-
             response.redirect("/menu_admin");
         }
         else {
@@ -146,6 +149,21 @@ async function moovetograde(request, response) {
 
 
 }
+
+
+function suppstudent(request, response) {
+    student_id = request.params.student_id;
+    if (request.user.login_level == "admin") {
+        gradeRepo.deletestudent(student_id);
+        var student_id = request.params.student_id;
+        response.redirect("/grades/" + student_id + "/name");
+
+    }
+    response.redirect("/");
+}
+
+
+
 async function grades(request, response) {
 
     if (request.user == undefined) {
@@ -166,10 +184,49 @@ async function grades(request, response) {
             data = await gradeRepo.gettheuserinfo(request.user.login_id);
 
         }
-        console.log("aller");
+
         response.render("grade", { "User": data, "grades": grades });
     }
 
+}
+
+
+async function addagrade(request, response) {
+    if (request.user == undefined) {
+        response.redirect("/");
+    } else {
+        if (request.user.login_level == "admin") {
+            filter = "name"
+            data = await gradeRepo.getadmininfo(request.user.login_id, request.user.login_level);
+            var grades = await gradeRepo.grade(filter, data[3]);
+            response.render("editgrade", { "User": data, "grades": grades });
+        } else {
+            response.redirect("/");
+        }
+
+    }
+}
+async function calculing(request, response) {
+    if (request.user == undefined) {
+        response.redirect("/");
+    } else {
+        if (request.user.login_level == "admin") {
+            thestudent_id = request.body.name;
+            filter = request.body.subject;
+            studentgrade = request.body.grade;
+
+            student = await gradeRepo.gettheuserinfo(thestudent_id);
+            console.log("student note" + student[filter]);
+            console.log("new note" + studentgrade);
+
+            finalgrade = (parseInt(student[filter]) + parseInt(studentgrade)) / 2;
+            await gradeRepo.moddifgrade(thestudent_id, filter, finalgrade)
+            response.redirect("/menu");
+        } else {
+            response.redirect("/");
+        }
+
+    }
 }
 
 
