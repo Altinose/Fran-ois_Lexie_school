@@ -16,3 +16,6 @@ to make our test we create a BDD with uncrypted password
 
 after that you can look at the BDD, all our pw are encrypted
 
+USer login : lpetit pw : 1234
+
+admin login: pletessier pw: dfghgf
