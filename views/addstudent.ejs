@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Grade</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="/static/header.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/header_footer.css">
+	<link rel="stylesheet" type="text/css" href="/static/add.css">
+
+</head>
+
+<header>
+	<nav>
+        <label class="logo"><a href="/menu">Francois Lexis</a></label>
+        <ul>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/event">Event</a></li>
+            <li><a href="/grades/<%=User[0]%>/">Grade</a></li>
+            <li><a href="/email">Email</a></li>
+            <li><a href="/timetable">Timetable</a></li>
+        </ul>
+        <label id="icon">
+            Menu
+        </label>
+    </nav>
+
+</header>
+
+<body>
+
+    
+
+    <div class="ecole"> </div>
+
+    <h1>Add student</h1>
+
+    <form>
+    <ul>
+		<li><input type="text" id="prenom" name="fname" class="fname" placeholder="First Name" spellcheck="true" maxlength="250"></li>
+		<li><input type="text"  id="nom de famille" name="fname" class="fname" placeholder="Last Name" spellcheck="true" maxlength="250"></li>
+		<li><input type="text"  id="telephone" name="fname" class="fname" placeholder="Phone Number" spellcheck="true" maxlength="250"></li>
+        <li><input type="text"  id="Math Grade" name="fname" class="fname" placeholder="Math Grade" spellcheck="true" maxlength="250"></li>
+        <li><input type="text"  id="History Grade" name="fname" class="fname" placeholder="History Grade" spellcheck="true" maxlength="250"></li>
+        <li><input type="text"  id="French Grade" name="fname" class="fname" placeholder="French Grade" spellcheck="true" maxlength="250"></li>
+        <li><input type="text"  id="pseudo" name="fname" class="fname" placeholder="Login Pseudo" spellcheck="true" maxlength="250"></li>
+        <li><input type="text"  id="password" name="fname" class="fname" placeholder="Password" spellcheck="true" maxlength="250"></li>
+    </ul>
+
+
+    <div class=button1>
+    <input type="button" id="vehicle3" name="vehicle3" value="Create" class="button">
+</div>
+    </form>
+</body>
+
+
+
+<footer>
+	<div class="foot">Nom_de_leleve</div>
+	<div class="foot">®François Lexis</div>
+	<div><a href = "#"><img class="deco" src="/static/header_pict/oui.png"></a></div>
+</footer>
+</html>
