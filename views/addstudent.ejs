@@ -34,21 +34,21 @@
 
     <h1>Add student</h1>
 
-    <form>
+    <form method="POST" action="/addstudent/adding">
     <ul>
 		<li><input type="text" id="prenom" name="fname" class="fname" placeholder="First Name" spellcheck="true" maxlength="250"></li>
-		<li><input type="text"  id="nom de famille" name="fname" class="fname" placeholder="Last Name" spellcheck="true" maxlength="250"></li>
-		<li><input type="text"  id="telephone" name="fname" class="fname" placeholder="Phone Number" spellcheck="true" maxlength="250"></li>
-        <li><input type="text"  id="Math Grade" name="fname" class="fname" placeholder="Math Grade" spellcheck="true" maxlength="250"></li>
-        <li><input type="text"  id="History Grade" name="fname" class="fname" placeholder="History Grade" spellcheck="true" maxlength="250"></li>
-        <li><input type="text"  id="French Grade" name="fname" class="fname" placeholder="French Grade" spellcheck="true" maxlength="250"></li>
-        <li><input type="text"  id="pseudo" name="fname" class="fname" placeholder="Login Pseudo" spellcheck="true" maxlength="250"></li>
-        <li><input type="text"  id="password" name="fname" class="fname" placeholder="Password" spellcheck="true" maxlength="250"></li>
+		<li><input type="text"  id="nom de famille" name="lname" class="fname" placeholder="Last Name" spellcheck="true" maxlength="250"></li>
+		<li><input type="text"  id="telephone" name="phone" class="fname" placeholder="Phone Number" spellcheck="true" maxlength="250"></li>
+        <li><input type="text"  id="Math Grade" name="grade_math" class="fname" placeholder="Math Grade" spellcheck="true" maxlength="250"></li>
+        <li><input type="text"  id="History Grade" name="grade_history" class="fname" placeholder="History Grade" spellcheck="true" maxlength="250"></li>
+        <li><input type="text"  id="French Grade" name="grade_french" class="fname" placeholder="French Grade" spellcheck="true" maxlength="250"></li>
+        <li><input type="text"  id="pseudo" name="login_first_name" class="fname" placeholder="Login Pseudo" spellcheck="true" maxlength="250"></li>
+        <li><input type="text"  id="password" name="login_password" class="fname" placeholder="Password" spellcheck="true" maxlength="250"></li>
     </ul>
 
 
     <div class=button1>
-    <input type="button" id="vehicle3" name="vehicle3" value="Create" class="button">
+    <input type="submit" id="vehicle3" name="vehicle3" value="Create" class="button">
 </div>
     </form>
 </body>
@@ -58,6 +58,6 @@
 <footer>
 	<div class="foot">Nom_de_leleve</div>
 	<div class="foot">®François Lexis</div>
-	<div><a href = "#"><img class="deco" src="/static/header_pict/oui.png"></a></div>
+	<div><a href = "/logout"><img class="deco" src="/static/header_pict/oui.png"></a></div>
 </footer>
 </html>
