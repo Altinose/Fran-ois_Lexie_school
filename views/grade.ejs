@@ -33,7 +33,7 @@ la<!DOCTYPE html>
 	<div class="ecole"> </div>
 
 	<div class= title>MY GRADE</div>
-
+	<%=User[4]%>
 	<table>
 		<tr class="top">
 			<td><a href="./name">Firstname <img class="fleche" src="/static/grade_pict/fleche.png"></a></td>
@@ -49,17 +49,19 @@ la<!DOCTYPE html>
         <td><%= g.grade_math %></td>
         <td><%= g.grade_french %></td>
 		<td><%= g.grade_history %></td>
-		</tr>	
+		<% if (User[5] == "admin"){ %>
+		<td><a href="/supp/<%=g.student_id%>">supprimer</a></td>
+		<%}%>
 	<% } %>
 	</table>
 
-<ul>
+	<% if (User[5] == "admin"){ %>
+		<ul>
 	<li><a href="#">Add a student</a></li>
 	<li><a href="#">Delete a student</a></li>
 	<li><a href="#">Edit grades</a></li>
 </ul>
-
-<br><br><br><br><br>
+		<% } %> 
 
 </body>
 

@@ -18,11 +18,11 @@ router.get("/connexion", connectiondisplay);
 
 router.post("/connexion/check", checkconnexion);
 
-router.post("/connexion/admin", userauth.checkAuthentication("admin"), redirtomenu);
+router.get("/connexion/admin", userauth.checkAuthentication("admin"), redirtomenu);
 router.get("/connexion/user", userauth.checkAuthentication("user"), redirtomenu);
 
 
-
+router.get("/menu_admin", menudisplay);
 
 
 //############ display ######################
@@ -48,7 +48,7 @@ async function timetabledisplay(request, response) {
     if (request.user == undefined) {
         response.redirect("/");
     } else {
-        data = await getuserinfo(request.user.login_id);
+        data = await gettheuserinfo(request.user.login_id);
         console.log(data);
         response.render("timetable", { "User": data });
 
@@ -59,10 +59,13 @@ async function menudisplay(request, response) {
     if (request.user == undefined) {
         response.redirect("/");
     } else {
-        data = await getuserinfo(request.user.login_id);
-        console.log(data);
-        response.render("menu", { "User": data });
-
+        if (request.user.login_level == "admin") {
+            data = await gradeRepo.getadmininfo(request.user.login_id, request.user.login_level);
+            response.render("menu_admin", { "User": data });
+        } else {
+            data = await gradeRepo.gettheuserinfo(request.user.login_id);
+            response.render("menu", { "User": data });
+        }
     }
 }
 
@@ -72,7 +75,7 @@ async function eventdisplay(request, response) {
     if (request.user == undefined) {
         response.redirect("/");
     } else {
-        data = await getuserinfo(request.user.login_id);
+        data = await gradeRepo.gettheuserinfo(request.user.login_id);
         console.log(data);
         response.render("event", { "User": data });
 
@@ -91,7 +94,7 @@ async function emaildisplay(request, response) {
     if (request.user == undefined) {
         response.redirect("/");
     } else {
-        data = await getuserinfo(request.user.login_id);
+        data = await gradeRepo.gettheuserinfo(request.user.login_id);
         console.log(data);
         response.render("email", { "User": data });
 
@@ -103,7 +106,7 @@ async function editgradedisplay(request, response) {
     if (request.user == undefined) {
         response.redirect("/");
     } else {
-        data = await getuserinfo(request.user.login_id);
+        data = await gradeRepo.gettheuserinfo(request.user.login_id);
         response.render("editgrade", { "User": data });
 
     }
@@ -112,7 +115,7 @@ async function addstudentdisplay(request, response) {
     if (request.user == undefined) {
         response.redirect("/");
     } else {
-        data = await getuserinfo(request.user.login_id);
+        data = await gradeRepo.gettheuserinfo(request.user.login_id);
         response.render("addstudent", { "User": data });
 
     }
@@ -125,6 +128,7 @@ function redirtomenu(request, response) {
         response.redirect("/");
     } else {
         if (request.user.login_level == "admin") {
+
             response.redirect("/menu_admin");
         }
         else {
@@ -132,9 +136,14 @@ function redirtomenu(request, response) {
         }
     }
 }
-function moovetograde(request, response) {
-    var student_id = request.params.student_id;
-    response.redirect("../" + student_id + "/name");
+async function moovetograde(request, response) {
+    if (request.user == undefined) {
+        response.redirect("/");
+    } else {
+        var student_id = request.params.student_id;
+        response.redirect("/grades/" + student_id + "/name");
+    }
+
 
 }
 async function grades(request, response) {
@@ -144,12 +153,21 @@ async function grades(request, response) {
     } else {
         var student_id = request.params.student_id;
         var filter = request.params.filter;
-        var idclass = await gradeRepo.getStudentclass(student_id);
-        var grades = await gradeRepo.grade(filter, idclass);
-        data = await getuserinfo(request.user.login_id);
-        console.log(data);
-        response.render("grade", { "User": data, "grades": grades });
+        if (request.user.login_level == "admin") {
+            data = await gradeRepo.getadmininfo(request.user.login_id, request.user.login_level);
+            var grades = await gradeRepo.grade(filter, data[3]);
+        } else {
+            idclass = await gradeRepo.getStudentclass(student_id);
+            for (var q of idclass) {
+                var student_class = q.student_class;
+            }
+            var grades = await gradeRepo.grade(filter, student_class);
 
+            data = await gradeRepo.gettheuserinfo(request.user.login_id);
+
+        }
+        console.log("aller");
+        response.render("grade", { "User": data, "grades": grades });
     }
 
 }
