@@ -44,15 +44,20 @@ router.get("/menu_admin", menudisplay);
 router.post("/addstudent/adding", addthestudent);
 router.get("/editgrade", addagrade);
 
-//#####################display#################""
+//#####################display####################
 async function timetabledisplay(request, response) {
     if (request.user == undefined) {
         response.redirect("/");
     } else {
-        data = await gradeRepo.gettheuserinfo(request.user.login_id);
-        console.log(data);
-        response.render("timetable", { "User": data });
-
+        if (request.user.login_level == "admin") {
+            data = await gradeRepo.getadmininfo(request.user.login_id);
+            console.log(data);
+            response.render("timetable", { "User": data });
+        } else {
+            data = await gradeRepo.gettheuserinfo(request.user.login_id);
+            console.log(data);
+            response.render("timetable", { "User": data });
+        }
     }
 }
 
