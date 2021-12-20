@@ -248,8 +248,6 @@ module.exports = {
 		sql = "INSERT INTO grade VALUES (?,?,?,?,?)";
 		const line = await conn.query(sql, [i, i, grade_math, grade_french, grade_history]);
 
-
-
 	}
 
 };
