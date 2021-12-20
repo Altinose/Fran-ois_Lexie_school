@@ -26,6 +26,9 @@ router.get("/welcome", showwelcome);
 
 router.get("/", redir);
 
+
+router.get("/connexion/failed", connexionfailed);
+
 router.get("/grades/:student_id/:filter", grades);
 router.get("/grades/:student_id", moovetograde);
 router.get("/supp/:student_id", suppstudent)
@@ -89,7 +92,7 @@ async function eventdisplay(request, response) {
 }
 function connectiondisplay(request, response) {
     if (request.user == undefined) {
-        response.render("connexion");
+        response.render("connexion", { "Check": true });
     } else {
         response.redirect("/menu");
     }
@@ -261,10 +264,16 @@ async function checkconnexion(request, response) {
         }
 
     } else {
-        response.send("Invalid credentials provided");
+        response.redirect("/connexion/failed");
     }
 
 }
+function connexionfailed(request, response) {
+
+    response.render("connexion", { "Check": false });
+
+}
+
 
 // * /addstudent/adding *  for adding a student to the database//
 
